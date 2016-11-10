@@ -27,7 +27,7 @@ function renderButtons(){
         $('#gifsAppearHere').empty();
         
         var p = $(this).data('person');
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=8";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=15";
 
         $.ajax({
                 url: queryURL,
@@ -43,14 +43,48 @@ function renderButtons(){
                 for (var i = 0; i < results.length; i++) {
 
                     //creates a new div
-                    var gifDiv = $('<div class="item" style:"display: inline float:left">')
+                    var gifDiv = $('<div>');
+                    gifDiv.addClass('item');
+
 
                     var rating = results[i].rating;
 //adds a pragrpah tags and changes the content in the p to Ratings
                     var p = $('<p>').text("Rating: " + rating);
 
                     var personImage = $('<img>');
-                    personImage.attr('src', results[i].images.fixed_height.url);
+                    personImage.data('static', results[i].images.fixed_height_still.url);
+                    personImage.data('dynamic', results[i].images.fixed_height.url);
+
+                    //sets image src
+                    personImage.attr('src', results[i].images.fixed_height_still.url);
+
+                    //this reads the image is static gif
+
+                
+
+                    personImage.on('click', function(){
+
+                        // this is isn reference to the function of personImage being created above
+                         var static = $(this).data('static');
+                         var dynamic = $(this).data('dynamic');
+                        // finds image src
+                        if ($(this).attr('src') == dynamic){
+
+
+                            $(this).attr('src', static);    
+                        }
+
+                        else {
+                            $(this).attr('src', dynamic);  
+
+                        }
+
+                    })
+
+
+
+
+
 
                     
                     //gifDiv.appendTo($('<br>'));
