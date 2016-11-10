@@ -7,69 +7,25 @@
 <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+    <link href="assets/css/style.css" rel="stylesheet">
+    
 
-    <style type="text/css">
-
-    body {
-    background-image: url("https://images.freecreatives.com/wp-content/uploads/2016/03/Stunning-Pokemon-Ball-HD-Background.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    }
-    .btn, #addDance {
-        background-color: #00b3b3;
-        color: white;
-
-    }
-
-    .btn {
-        text-align: center;
-    }
-
-    img {
-        width: 200px;
-        height: 100px;
-    }
-    button, div, form, input {
-            margin: 2px;
-        }
-
-        .btn:hover{
-            background-color: green;
-
-        }
-
-        img:hover {
-            border: 1px solid #ffcccc ;
-        }
-
-        .jumbotron {
-            background-color: #800060;
-            opacity: .9;
-            margin-top: 10px;
-
-        }
-
-        #gifsAppearHere{
-            color: #ffcccc;
-            font-weight: 23px;
-            font-weight: bold;
-        }
-        label {
-        color: black;
-        font-weight: bolder;
-
-        }
-    </style>
+  
 </head>
 
 <body>
 <div class="container">
 
     <div class= "jumbotron">
+    <div class="row">
+
     <h1 class = "text-center"> Build Your Gym Today! </h1>
+   
+
+    </div> 
+    
     </div>
+  
     <div class="row">
         <div class="col-md-12"></div>
             <div id="buttons">
@@ -100,87 +56,7 @@
 </div>
 
 <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
-<script type="text/javascript">
-
-
-var topics = ['Snorlax', 'Lapras', 'Charizard', 'Pikachu', 'Dragonite', 'Poliwhirl', 'Vulpix', 'Snorlax', 'Seadra', 'Ditto', 'Squirtle', 'Mewtwo', 'Mr.Mine'];
-
-    
-
-function renderButtons(){ 
-   $('#buttons').empty();
-        // Loops through the array of movies
-        
-    for (var i = 0; i < topics.length; i++){
-            // Then dynamicaly generates buttons for each movie in the array
-
-            // Note the jQUery syntax here... 
-            var a = $('<button>') // This code $('<button>') is all jQuery needs to create the beginning and end tag. (<button></button>)
-            a.addClass('movie'); // Added a class 
-            a.addClass('newaction');
-             a.addClass('btn');
-            a.attr("data-person", topics[i]);
-            // Added a data-attribute
-            a.text(topics[i]);
-
-             // Provided the initial button text
-            $('#buttons').append(a); // Added the button to the HTML
-
-}
-     $('.btn').on('click', function() {
-
-        $('#gifsAppearHere').empty();
-        
-        var p = $(this).data('person');
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=8";
-
-        $.ajax({
-                url: queryURL,
-                method: 'GET'
-            })
-            .done(function(response) {
-                //store data in this variable
-                var results = response.data;
-
-                //this will console log the api and the object
-                    console.log("#button");
-
-                for (var i = 0; i < results.length; i++) {
-
-                    //creates a new div
-                    var gifDiv = $('<div class="item">')
-
-                    var rating = results[i].rating;
-//adds a pragrpah tags and changes the content in the p to Ratings
-                    var p = $('<p>').text("Rating: " + rating);
-
-                    var personImage = $('<img>');
-                    personImage.attr('src', results[i].images.fixed_height.url);
-                    gifDiv.appendTo($('<br>'));
-                    //eveything above this is not being shwon yet
-//the rating and image is now being shown since we we just appended it to the p  just created and the person image on the page
-                    gifDiv.append(p)
-                    gifDiv.append(personImage)
-
-                    $('#gifsAppearHere').prepend(gifDiv);
-
-                }
-            });
-    });
-        }
-    
-console.log("b")
-
-        $('#addDance').on('click', function(){
-            var movie = $('#dance-input').val().trim();
-            topics.push(movie);
-
-            renderButtons();
-                return false;
-    })
- renderButtons();
-
-
+<script src="assets/javascript/js.js" type="text/javascript">
 
 
 
