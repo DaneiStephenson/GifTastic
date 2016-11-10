@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Dance Dance, Click-O-Lution</title>
+    <title>Pokemon Giphy</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -9,21 +9,71 @@
 
 
     <style type="text/css">
-        button, div, form, input {
+
+    body {
+    background-image: url("https://images.freecreatives.com/wp-content/uploads/2016/03/Stunning-Pokemon-Ball-HD-Background.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+    .btn, #addDance {
+        background-color: #00b3b3;
+        color: white;
+
+    }
+
+    .btn {
+        text-align: center;
+    }
+
+    img {
+        width: 200px;
+        height: 100px;
+    }
+    button, div, form, input {
             margin: 2px;
+        }
+
+        .btn:hover{
+            background-color: green;
+
+        }
+
+        img:hover {
+            border: 1px solid #ffcccc ;
+        }
+
+        .jumbotron {
+            background-color: #800060;
+            opacity: .9;
+            margin-top: 10px;
+
+        }
+
+        #gifsAppearHere{
+            color: #ffcccc;
+            font-weight: 23px;
+            font-weight: bold;
+        }
+        label {
+        color: black;
+        font-weight: bolder;
+
         }
     </style>
 </head>
 
 <body>
 <div class="container">
+
+    <div class= "jumbotron">
+    <h1 class = "text-center"> Build Your Gym Today! </h1>
+    </div>
     <div class="row">
         <div class="col-md-12"></div>
             <div id="buttons">
-                <button class="btn" data-person="Cabbage Patch">BRing It around</button>
-                <button class="btn" data-person="Jerk">You're a jerk</button>
-                <button class="btn" data-person="Waltz">Annnn I,2,3,4</button>
-                <button  class="btn" data-person="Wu-Tang">Wu-Tang With it</button>
+          
             </div>
             </div>
     </div>
@@ -38,10 +88,10 @@
         <div class="col-md-4"></div>
             <span>
             <form id="dance-form">
-            <label for="dance-input"> Insert Dance Here</label>
+            <label for="dance-input"> I choose :</label>
             <input type="text" id="dance-input">
             
-            <input id="addDance" type="submit" value="Bust A Move">
+            <input id="addDance" type="submit" value="Go!">
             </form>
             </span>
     </div>
@@ -53,11 +103,7 @@
 <script type="text/javascript">
 
 
-
-
-
-
-var topics = ['Da Dip', 'Soulja Boy', 'Fall', 'Cry', 'Love', 'Drive', 'Take', 'Escape'];
+var topics = ['Snorlax', 'Lapras', 'Charizard', 'Pikachu', 'Dragonite', 'Poliwhirl', 'Vulpix', 'Snorlax', 'Seadra', 'Ditto', 'Squirtle', 'Mewtwo', 'Mr.Mine'];
 
     
 
@@ -110,6 +156,7 @@ function renderButtons(){
 
                     var personImage = $('<img>');
                     personImage.attr('src', results[i].images.fixed_height.url);
+                    gifDiv.appendTo($('<br>'));
                     //eveything above this is not being shwon yet
 //the rating and image is now being shown since we we just appended it to the p  just created and the person image on the page
                     gifDiv.append(p)
