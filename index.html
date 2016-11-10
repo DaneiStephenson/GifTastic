@@ -54,11 +54,7 @@
 
 
 
-$("#buttons").append("<button   class='btn' data-person='freestyle'> Secret Dance</button") 
 
-            $("#buttons").append("<button class='btn' data-person='bop'> And here we go!</button") 
-
-            $("#buttons").append("<button  class='btn' data-person='Twirl'>Spin</button") 
 
 
 var topics = ['Run', 'Jump', 'Fall', 'Cry', 'Love', 'Drive', 'Take', 'Escape'];
@@ -76,24 +72,21 @@ function renderButtons(){
             var a = $('<button>') // This code $('<button>') is all jQuery needs to create the beginning and end tag. (<button></button>)
             a.addClass('movie'); // Added a class 
             a.addClass('newaction');
-            a.attr("data", "person");
-            a.addClass('btn')
+             a.addClass('btn');
+            a.attr("data-person", topics[i]);
+            // Added a data-attribute
+            a.text(topics[i]);
 
-           $('data-person').text(topics[i]); // Added a data-attribute
-            a.text(topics[i]); // Provided the initial button text
+
+
+            
+
+             // Provided the initial button text
             $('#buttons').append(a); // Added the button to the HTML
-        }
-    }
-console.log("b")
 
-        $('#addDance').on('click', function(){
-            var movie = $('#dance-input').val().trim();
-            topics.push(movie);
 
-            renderButtons();
-                return false;
-    })
- renderButtons();
+
+
 
 
             $('.btn').on('click', function() {
@@ -133,6 +126,20 @@ console.log("b")
                 }
             });
     });
+        }
+    }
+console.log("b")
+
+        $('#addDance').on('click', function(){
+            var movie = $('#dance-input').val().trim();
+            topics.push(movie);
+
+            renderButtons();
+                return false;
+    })
+ renderButtons();
+
+
 
 
 
