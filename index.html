@@ -57,7 +57,7 @@
 
 
 
-var topics = ['Run', 'Jump', 'Fall', 'Cry', 'Love', 'Drive', 'Take', 'Escape'];
+var topics = ['Da Dip', 'Soulja Boy', 'Fall', 'Cry', 'Love', 'Drive', 'Take', 'Escape'];
 
     
 
@@ -77,23 +77,17 @@ function renderButtons(){
             // Added a data-attribute
             a.text(topics[i]);
 
-
-
-            
-
              // Provided the initial button text
             $('#buttons').append(a); // Added the button to the HTML
 
+}
+     $('.btn').on('click', function() {
 
-
-
-
-
-            $('.btn').on('click', function() {
+        $('#gifsAppearHere').empty();
         
         var p = $(this).data('person');
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=10";
-//calls AJAX funtion and calling the url provided
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=8";
+
         $.ajax({
                 url: queryURL,
                 method: 'GET'
@@ -127,7 +121,7 @@ function renderButtons(){
             });
     });
         }
-    }
+    
 console.log("b")
 
         $('#addDance').on('click', function(){
