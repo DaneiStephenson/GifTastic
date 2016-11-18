@@ -1,4 +1,5 @@
-var topics = ['Snorlax', 'Lapras', 'Charizard', 'Pikachu', 'Dragonite', 'Poliwhirl', 'Vulpix', 'Snorlax', 'Seadra', 'Ditto', 'Squirtle', 'Mewtwo', 'Mr.Mine'];
+var topics = [''];
+var deals;
 
     
 
@@ -16,7 +17,7 @@ function renderButtons(){
              a.addClass('btn');
             a.attr("data-person", topics[i]);
             // Added a data-attribute
-            a.text(topics[i]);
+            a.text("deals");
 
              // Provided the initial button text
             $('#buttons').append(a); // Added the button to the HTML
@@ -27,7 +28,9 @@ function renderButtons(){
         $('#gifsAppearHere').empty();
         
         var p = $(this).data('person');
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=15";
+
+        
+        var queryURL = "http://api.sqoot.com/v2/deals?api_key=39zxwo4hbW89U737y87p&per_page=10&_radius=10-&query="+ p ;
 
         $.ajax({
                 url: queryURL,
@@ -35,51 +38,41 @@ function renderButtons(){
             })
             .done(function(response) {
                 //store data in this variable
-                var results = response.data;
+
+                
+
+                console.log(results);
+                
 
                 //this will console log the api and the object
                     console.log("#button");
 
-                for (var i = 0; i < results.length; i++) {
+                for (var i = 0; i < 10; i++) {
+                    var results = response.deals[i].deal.title;
+                var image= response.deals[i].deal.image_url;
 
                     //creates a new div
                     var gifDiv = $('<div>');
                     gifDiv.addClass('item');
 
-
-                    var rating = results[i].rating;
+                    console.log(10);
+                    var title = results[i].title;
 //adds a pragrpah tags and changes the content in the p to Ratings
-                    var p = $('<p>').text("Rating: " + rating);
+                    var p = $('<p>').text("Title: " + results);
 
+                    
                     var personImage = $('<img>');
-                    personImage.data('static', results[i].images.fixed_height_still.url);
-                    personImage.data('dynamic', results[i].images.fixed_height.url);
+                    personImage.data('static', image);
+                   
 
                     //sets image src
-                    personImage.attr('src', results[i].images.fixed_height_still.url);
+                    personImage.attr('src', image);
 
                     //this reads the image is static gif
 
                 
 
-                    personImage.on('click', function(){
-
-                        // this is isn reference to the function of personImage being created above
-                         var static = $(this).data('static');
-                         var dynamic = $(this).data('dynamic');
-                        // finds image src
-                        if ($(this).attr('src') == dynamic){
-
-
-                            $(this).attr('src', static);    
-                        }
-
-                        else {
-                            $(this).attr('src', dynamic);  
-
-                        }
-
-                    })
+                   
 
 
 
